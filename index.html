@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Рыбалка без удочки</title>
+</head>
+<body>
+<div id="aqua">
+    <div class="board">
+        <div class="params">Очки - {{ counter }} | Оставшееся время - {{currentTime}} | Имя Игрока: {{ name }}</div>
+        <div class="start">
+            <br>
+            <input class="text-field__input" v-if="!flag" v-model="name" placeholder="Введите имя Игрока"></p>
+            <button class="btn" @click="startGame" @:click="flag = true" v-if="!flag">Начать рыбалку</button>
+        </div>
+    </div>
+    <div class="top">
+        <p v-if="!Flag" v-for="(counter) in counters">Игрок: {{name}} | Очки - {{ counter.counter }}</p>
+    </div>
+    <div class="fishBoard">
+        <transition-group name="fishMove">
+            <div v-for="(fish, index) in field" v-bind:key="fish.id" @click="deleteFish(index)"><img class="fishMove" src="img/fish1.png"></div>
+        </transition-group>
+    </div>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script defer src="js/main.js"></script>
+</html>
